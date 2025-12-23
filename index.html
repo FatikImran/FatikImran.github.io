@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Fatik Bin Imran - Software Developer & AI Enthusiast</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #000000;
+            --bg: #ffffff;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #e0e0e0;
+            --hover: #f5f5f5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section:first-of-type {
+            padding-top: 8rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border: 2px solid var(--primary);
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        /* Projects Section */
+        .projects-container {
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .project-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--hover);
+            color: var(--text);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary);
+            transition: opacity 0.3s;
+        }
+
+        .project-link:hover {
+            opacity: 0.7;
+        }
+
+        #more-projects {
+            display: none;
+        }
+
+        #more-projects.expanded {
+            display: block;
+        }
+
+        .view-more-btn {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .skill-tag {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Education Section */
+        .education-card {
+            border-left: 3px solid var(--primary);
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .education-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .education-card .degree {
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .meta {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .coursework {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .course-tag {
+            background: var(--hover);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        /* Certifications Section */
+        .cert-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cert-item {
+            background: var(--hover);
+            padding: 1.2rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .cert-item strong {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .cert-item span {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary);
+            transition: opacity 0.3s;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border);
+                gap: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                padding: 0.8rem 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .profile-img {
+                margin: 0 auto;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Muhammad Fatik Bin Imran</div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Hi, I'm Fatik!</h1>
+        <p>A passionate and driven student with robust proficiency in C++. Enthusiastically seeking coding competitions and internships to propel expertise in programming to new heights. Excited to leverage academic projects and programming knowledge to sincerely contribute and foster innovation within society, as part of my dream to Shake The World.</p>
+        <div class="cta-buttons">
+            <a href="#projects" class="btn">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            <a href="resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <img src="profile.png" alt="Fatik" class="profile-img">
+            <div class="about-text">
+                <p>I'm a Computer Science student with a deep passion for creating innovative solutions through code. My journey in programming began with C++, and has since expanded to encompass various technologies and domains.</p>
+                <p>I thrive on challenges and am constantly seeking opportunities to learn and grow. Whether it's competitive programming, building real-world applications, or exploring the latest in AI and technology, I'm driven by a desire to make meaningful contributions to the tech world.</p>
+                <p>My ultimate goal is to leverage technology to create positive change in society and truly "Shake The World" through innovation and dedication.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        
+        <!-- Featured Projects (Always Visible) -->
+        <div class="projects-container">
+            <!-- PROJECT 1: AI CONTENT GENERATOR -->
+            <div class="project-card">
+                <h3>AI Social Media Content Generator</h3>
+                <p>Built an intelligent web application that generates engaging social media captions using HuggingFace's Llama 3.2 AI model. Implemented serverless architecture with Vercel Functions to securely handle API tokens, enabling anyone to generate content instantly without authentication. The tool generates 5 unique, platform-specific captions with relevant hashtags in seconds, helping content creators, marketers, and businesses maintain consistent social media presence.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">AI/LLM</span>
+                    <span class="tech-tag">HuggingFace</span>
+                    <span class="tech-tag">Llama 3.2</span>
+                    <span class="tech-tag">Vercel</span>
+                    <span class="tech-tag">Serverless</span>
+                    <span class="tech-tag">HTML/CSS</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://ai-social-content-generator.vercel.app" class="project-link" target="_blank">Live Demo →</a>
+                    <a href="https://github.com/FatikImran/ai-social-content-generator" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 2: CONNECT PLATFORM -->
+            <div class="project-card">
+                <h3>Connect - Event Discovery & Management Platform</h3>
+                <p>Designed and developed a full-stack event discovery platform addressing the fragmented information landscape in Pakistan's student community. The system includes a cloud-synced Android mobile app (Kotlin) and desktop application (Java) that enable students to discover local events and organizers to manage registrations efficiently. Implemented offline-first architecture with SQLite for local storage and Firebase for cloud synchronization. Conducted UI/UX design in Figma, managed a team of 3, and applied software design principles throughout development.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Kotlin</span>
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">XML</span>
+                    <span class="tech-tag">SQLite</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">Figma</span>
+                    <span class="tech-tag">Android Studio</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/FatikImran" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 3: INSTAGRAM CLONE -->
+            <div class="project-card">
+                <h3>Instagram - Full-Featured Social Media App</h3>
+                <p>Built a pixel-perfect, fully-functional replica of Instagram for Android, implementing core features including user authentication, photo posts, stories, profiles, likes, comments, and real-time feed updates. Architected a hybrid storage solution using Firebase for media/auth, MySQL for relational data, and SQLite for offline caching. The app handles concurrent users, media uploads, and maintains responsive performance across devices.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Kotlin</span>
+                    <span class="tech-tag">XML</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">SQLite</span>
+                    <span class="tech-tag">Android Studio</span>
+                    <span class="tech-tag">Railway</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/FatikImran" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- More Projects (Expandable) -->
+        <div id="more-projects">
+            <div class="projects-container">
+                <!-- PROJECT 4: TRAVELER MANAGEMENT -->
+                <div class="project-card">
+                    <h3>TravelEase - Multi-Portal Management System</h3>
+                    <p>Developed a comprehensive desktop application for traveler management with four distinct user portals (Traveler, Organizer, Service Provider, Admin), each with role-based access controls and customized functionality. Designed and implemented a normalized relational database schema to handle complex relationships between users, bookings, services, and administrative functions.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Desktop Development</span>
+                        <span class="tech-tag">Database Design</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/FatikImran" class="project-link" target="_blank">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 5: GITLITE -->
+                <div class="project-card">
+                    <h3>GitLite - Version Control System</h3>
+                    <p>Implemented a lightweight version control system using advanced tree data structures (BST, B-Tree, Merkle Tree, Red-Black Tree) to efficiently manage .csv file versioning and change synchronization. Led a team of 3 in designing the architecture and implementing algorithms for commit, branch, and merge operations via console interface.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Data Structures</span>
+                        <span class="tech-tag">Team Leadership</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/FatikImran" class="project-link" target="_blank">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 6: AIR TRAFFIC CONTROL -->
+                <div class="project-card">
+                    <h3>Air Traffic Control Simulation</h3>
+                    <p>Simulated a real-time air traffic control system managing multiple aircraft arrivals, runway assignments, conflict detection, and violation tracking. Implemented concurrent processing using C++ threading and mutex locks to handle simultaneous aircraft operations while maintaining safety protocols.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Multithreading</span>
+                        <span class="tech-tag">Mutex</span>
+                        <span class="tech-tag">Simulation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/FatikImran" class="project-link" target="_blank">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 7: PLANTS VS ZOMBIES -->
+                <div class="project-card">
+                    <h3>Plants vs Zombies - Game Development</h3>
+                    <p>Recreated the EA classic game Plants vs Zombies with complete gameplay mechanics including multiple plant types, zombie waves, resource management, and level progression. Led a team of 2 developers, implementing object-oriented design patterns and game state management using C++ and SFML.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">OOP</span>
+                        <span class="tech-tag">Game Development</span>
+                        <span class="tech-tag">SFML</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/FatikImran" class="project-link" target="_blank">View on GitHub →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="view-more-btn">
+            <button class="btn" onclick="toggleProjects()">View More Projects</button>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills & Technologies</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">Kotlin</span>
+                    <span class="skill-tag">SQL</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Web & Mobile Development</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Android Studio</span>
+                    <span class="skill-tag">Vercel</span>
+                    <span class="skill-tag">Railway</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>AI & Data</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">HuggingFace</span>
+                    <span class="skill-tag">LLMs</span>
+                    <span class="skill-tag">Prompt Engineering</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">SQLite</span>
+                    <span class="skill-tag">Firebase</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Tools & Technologies</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Git/GitHub</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Notion</span>
+                    <span class="skill-tag">Canva</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2>Education</h2>
+        <div class="education-card">
+            <h3>FAST NUCES Islamabad</h3>
+            <div class="degree">Bachelor of Science in Computer Science</div>
+            <div class="meta">Expected Graduation: August 2027 | CGPA: 3.44/4.00</div>
+            <div class="coursework">
+                <span class="course-tag">Data Structures & Algorithms</span>
+                <span class="course-tag">Operating Systems</span>
+                <span class="course-tag">Database Systems</span>
+                <span class="course-tag">Software Design & Analysis</span>
+                <span class="course-tag">Object-Oriented Programming</span>
+                <span class="course-tag">Linear Algebra</span>
+                <span class="course-tag">Calculus I & II</span>
+                <span class="course-tag">Probability & Statistics</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="cert-list">
+            <div class="cert-item">
+                <strong>Google Soft Skills Certificate</strong>
+                <br>
+                <span>Issued by Google</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <p style="margin-bottom: 2rem; color: var(--text-light); font-size: 1.1rem;">
+            Feel free to reach out if you'd like to collaborate, discuss opportunities, or just have a chat about studying, gaming or technology!
+        </p>
+        <div class="contact-links">
+            <div class="contact-item">
+                <span style="font-size: 1.5rem;">📧</span>
+                <a href="mailto:fatikimran@gmail.com">fatikimran@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <span style="font-size: 1.5rem;">💻</span>
+                <a href="https://github.com/FatikImran" target="_blank">github.com/FatikImran</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Muhammad Fatik Bin Imran. Built with passion and code.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll animation on page load
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Make first section visible immediately
+        document.querySelector('section').classList.add('visible');
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+
+        // Toggle more projects
+        function toggleProjects() {
+            const moreProjects = document.getElementById('more-projects');
+            const btn = event.target;
+            
+            if (moreProjects.classList.contains('expanded')) {
+                moreProjects.classList.remove('expanded');
+                btn.textContent = 'View More Projects';
+            } else {
+                moreProjects.classList.add('expanded');
+                btn.textContent = 'View Less Projects';
+            }
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
