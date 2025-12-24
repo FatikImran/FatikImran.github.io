@@ -124,8 +124,26 @@
         .hero {
             min-height: 80vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
+            align-items: center;
+        }
+
+        .hero-inner {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-badge {
+            flex: 0 0 auto;
         }
 
         .hero p {
@@ -134,6 +152,17 @@
             max-width: 600px;
             margin-bottom: 2rem;
             line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero-inner {
+                flex-direction: column;
+                padding: 1rem;
+                text-align: center;
+            }
+            .hero-badge {
+                margin-top: 1rem;
+            }
         }
 
         .cta-buttons {
@@ -462,6 +491,7 @@
         }
     </style>
 </head>
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 <body>
     <!-- Navigation -->
     <nav>
@@ -481,14 +511,25 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <h1>Hi, I'm Fatik!</h1>
-        <p>A passionate and driven student with robust proficiency in C++. Enthusiastically seeking coding competitions and internships to propel expertise in programming to new heights. Excited to leverage academic projects and programming knowledge to sincerely contribute and foster innovation within society, as part of my dream to Shake The World.</p>
-        <div class="cta-buttons">
-            <a href="#projects" class="btn">View My Work</a>
-            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-            <a href="MuhammadFatikBin_Imran_Resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <h1>Hi, I'm Fatik!</h1>
+                <p>A passionate and driven student with robust proficiency in C++. Enthusiastically seeking coding competitions and internships to propel expertise in programming to new heights. Excited to leverage academic projects and programming knowledge to sincerely contribute and foster innovation within society, as part of my dream to Shake The World.</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    <a href="MuhammadFatikBin_Imran_Resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+                </div>
+            </div>
+            <div class="hero-badge">
+                <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL"
+                    data-vanity="fatikimran" data-version="v1"><a class="badge-base__link LI-simple-link"
+                        href="https://pk.linkedin.com/in/fatikimran?trk=profile-badge"></a></div>
+            </div>
         </div>
     </section>
+
+    
 
     <!-- About Section -->
     <section id="about">
