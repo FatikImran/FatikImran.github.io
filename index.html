@@ -429,6 +429,28 @@
             opacity: 0.7;
         }
 
+        .copy-toast {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: var(--primary);
+            color: #ffffff;
+            border: 1px solid var(--primary);
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            opacity: 0;
+            transition: opacity 0.25s, transform 0.25s;
+            pointer-events: none;
+            z-index: 2000;
+        }
+
+        .copy-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -578,8 +600,8 @@
                     <span class="tech-tag">HTML/CSS</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://ai-social-content-generator.vercel.app" class="project-link" target="_blank">Live Demo →</a>
-                    <a href="https://github.com/FatikImran/ai-social-content-generator" class="project-link" target="_blank">View on GitHub →</a>
+                    <a href="https://ai-social-content-generator.vercel.app" class="project-link" target="_blank" rel="noopener">Live Demo →</a>
+                    <a href="https://github.com/FatikImran/ai-social-content-generator" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
                 </div>
             </div>
 
@@ -597,7 +619,7 @@
                     <span class="tech-tag">Android Studio</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/FatikImran" class="project-link" target="_blank">View on GitHub →</a>
+                    <a href="https://github.com/FatikImran" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
                 </div>
             </div>
 
@@ -615,7 +637,7 @@
                     <span class="tech-tag">Railway</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/FatikImran/Socially-Android-App-3.0" class="project-link" target="_blank">View on GitHub →</a>
+                    <a href="https://github.com/FatikImran/Socially-Android-App-3.0" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
                 </div>
             </div>
         </div>
@@ -634,7 +656,7 @@
                         <span class="tech-tag">Database Design</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/AKA-5/TravelEase_ManagementSystem" class="project-link" target="_blank">View on GitHub →</a>
+                        <a href="https://github.com/AKA-5/TravelEase_ManagementSystem" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
                     </div>
                 </div>
 
@@ -648,7 +670,7 @@
                         <span class="tech-tag">Team Leadership</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/ObaidullahShoaib/DSProject" class="project-link" target="_blank">View on GitHub →</a>
+                        <a href="https://github.com/ObaidullahShoaib/DSProject" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
                     </div>
                 </div>
 
@@ -663,7 +685,7 @@
                         <span class="tech-tag">Simulation</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/FatikImran/Air-Traffic-Control-System" class="project-link" target="_blank">View on GitHub →</a>
+                        <a href="https://github.com/FatikImran/Air-Traffic-Control-System" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
                     </div>
                 </div>
 
@@ -697,9 +719,11 @@
                     <span class="skill-tag">Python</span>
                     <span class="skill-tag">Java</span>
                     <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">C</span>
                     <span class="skill-tag">C#</span>
                     <span class="skill-tag">Kotlin</span>
                     <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">PHP</span>
                 </div>
             </div>
 
@@ -736,6 +760,7 @@
                     <span class="skill-tag">Figma</span>
                     <span class="skill-tag">Notion</span>
                     <span class="skill-tag">Canva</span>
+                    <span class="skill-tag">Postman</span>
                 </div>
             </div>
         </div>
@@ -761,6 +786,27 @@
                 <span class="course-tag">Digital Image Processing</span>
                 <span class="course-tag">Software for Mobile Devices</span>
                 <span class="course-tag">Parallel & Distributed Computing</span>
+            </div>
+        </div>
+        <div class="education-card">
+            <h3>Future World School H-11/4 Islamabad</h3>
+            <div class="degree">A Levels</div>
+            <div class="meta">2021 - 2023 | 3 A's in Computer Science, Mathematics & Physics</div>
+            <div class="coursework">
+                <span class="course-tag">Further Mathematics</span>
+                <span class="course-tag">Sociology</span>
+            </div>
+        </div>
+        <div class="education-card">
+            <h3>Roots Millennium Flagship Campus I-9/3 Islamabad</h3>
+            <div class="degree">IGCSE</div>
+            <div class="meta">2018 - 2021 | 8 A's (including 6 A*s)</div>
+            <div class="coursework">
+                <span class="course-tag">Additional Mathematics</span>
+                <span class="course-tag">Computer Science</span>
+                <span class="course-tag">Mathematics</span>
+                <span class="course-tag">Physics</span>
+                <span class="course-tag">Chemistry</span>
             </div>
         </div>
     </section>
@@ -799,11 +845,15 @@
         <div class="contact-links">
             <div class="contact-item">
                 <span style="font-size: 1.5rem;">📧</span>
-                <a href="mailto:fatikbinimran@gmail.com">fatikbinimran@gmail.com</a>
+                <a href="mailto:fatikbinimran@gmail.com" id="email-link">fatikbinimran@gmail.com</a>
             </div>
             <div class="contact-item">
                 <span style="font-size: 1.5rem;">💻</span>
-                <a href="https://github.com/FatikImran" target="_blank">github.com/FatikImran</a>
+                <a href="https://github.com/FatikImran" target="_blank" rel="noopener">github.com/FatikImran</a>
+            </div>
+            <div class="contact-item">
+                <span style="font-size: 1.5rem;">💼</span>
+                <a href="https://pk.linkedin.com/in/fatikimran" target="_blank" rel="noopener">linkedin.com/in/fatikimran</a>
             </div>
         </div>
     </section>
@@ -813,6 +863,8 @@
         <p>&copy; 2025 Muhammad Fatik Bin Imran. Built with passion and code.</p>
         <p style="margin-top: 0.5rem; font-size: 0.85rem;">Crown icon image by juicy_fish on Freepik.</p>
     </footer>
+
+    <div id="copy-toast" class="copy-toast" role="status" aria-live="polite">Email copied</div>
 
     <script>
         // Smooth scroll animation on page load
@@ -860,6 +912,44 @@
             link.addEventListener('click', () => {
                 document.getElementById('nav-menu').classList.remove('active');
             });
+        });
+
+        const emailLink = document.getElementById('email-link');
+        const copyToast = document.getElementById('copy-toast');
+        let copyToastTimeout;
+
+        function showCopyToast(message) {
+            copyToast.textContent = message;
+            copyToast.classList.add('show');
+            clearTimeout(copyToastTimeout);
+            copyToastTimeout = setTimeout(() => {
+                copyToast.classList.remove('show');
+            }, 1800);
+        }
+
+        emailLink.addEventListener('click', async function(event) {
+            event.preventDefault();
+            const email = 'fatikbinimran@gmail.com';
+
+            try {
+                await navigator.clipboard.writeText(email);
+                showCopyToast('Email copied');
+            } catch (error) {
+                const tempInput = document.createElement('input');
+                tempInput.value = email;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                tempInput.setSelectionRange(0, email.length);
+
+                const copied = document.execCommand('copy');
+                document.body.removeChild(tempInput);
+
+                if (copied) {
+                    showCopyToast('Email copied');
+                } else {
+                    showCopyToast('Could not copy email');
+                }
+            }
         });
     </script>
 </body>
