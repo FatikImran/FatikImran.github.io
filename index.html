@@ -451,6 +451,47 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        .back-to-top {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 1px solid var(--primary);
+            background: var(--primary);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+            z-index: 1500;
+        }
+
+        .back-to-top svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            opacity: 0.85;
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -866,6 +907,11 @@
     </footer>
 
     <div id="copy-toast" class="copy-toast" role="status" aria-live="polite">Email copied</div>
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M18 15L12 9L6 15"></path>
+        </svg>
+    </button>
 
     <script>
         // Smooth scroll animation on page load
@@ -917,6 +963,7 @@
 
         const emailLink = document.getElementById('email-link');
         const copyToast = document.getElementById('copy-toast');
+        const backToTopButton = document.getElementById('back-to-top');
         let copyToastTimeout;
 
         function showCopyToast(message) {
@@ -951,6 +998,18 @@
                     showCopyToast('Could not copy email');
                 }
             }
+        });
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 250) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
