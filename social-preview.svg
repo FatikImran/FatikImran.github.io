@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Muhammad Fatik Bin Imran Portfolio</title>
+  <desc id="desc">Social preview card for Muhammad Fatik Bin Imran portfolio website.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f4f4f4" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="56" y="56" width="1088" height="518" rx="28" fill="#ffffff" stroke="#000000" stroke-width="3" />
+
+  <circle cx="144" cy="142" r="38" fill="#000000" />
+  <text x="144" y="154" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">♛</text>
+
+  <text x="210" y="150" font-family="Segoe UI, Arial, sans-serif" font-size="52" font-weight="700" fill="#000000">
+    Muhammad Fatik Bin Imran
+  </text>
+  <text x="210" y="198" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="500" fill="#333333">
+    Full Stack Developer &amp; AI Engineer
+  </text>
+
+  <text x="88" y="292" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="600" fill="#111111">Building:</text>
+
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#222222">
+    <text x="88" y="340">• AI-powered applications with LLMs and modern tooling</text>
+    <text x="88" y="384">• End-to-end full-stack web and mobile solutions</text>
+    <text x="88" y="428">• Practical systems focused on product impact</text>
+  </g>
+
+  <text x="88" y="524" font-family="Segoe UI, Arial, sans-serif" font-size="22" fill="#666666">
+    fatikimran.github.io
+  </text>
+</svg>
