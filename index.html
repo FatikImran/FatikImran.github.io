@@ -125,6 +125,14 @@
             padding-top: 8rem;
         }
 
+        #research {
+            padding-bottom: 2.5rem;
+        }
+
+        #projects {
+            padding-top: 2.5rem;
+        }
+
         h1 {
             font-size: 3.5rem;
             font-weight: 700;
@@ -582,6 +590,14 @@
             section {
                 padding: 3rem 1.5rem;
             }
+
+            #research {
+                padding-bottom: 2rem;
+            }
+
+            #projects {
+                padding-top: 2rem;
+            }
         }
     </style>
 </head>
@@ -598,6 +614,7 @@
             <ul id="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#education">Education</a></li>
@@ -637,6 +654,29 @@
                 <p>I'm a Computer Science student with a deep passion for creating innovative solutions through code. My journey in programming began with Python & C++, and has since expanded to encompass various technologies and domains.</p>
                 <p>I thrive on challenges and am constantly seeking opportunities to learn and grow. Whether it's competitive programming, building real-world applications, or exploring the latest in AI and technology, I'm driven by a desire to make meaningful contributions to the tech world.</p>
                 <p>My ultimate goal is to leverage technology to create positive change in society and truly "Shake The World" through innovation and dedication.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+        <h2>Research Experience</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <h3>Parallel Triangle Counting on Shared-Memory Systems</h3>
+                <p>Implemented and evaluated a high-performance triangle-counting system in C++17 for large undirected graphs, combining SIMD and OpenMP techniques on shared-memory hardware. Developed six variants (scalar, SIMD intrinsics, OpenMP SIMD, OpenMP threads, and two hybrid approaches), architecture-aware configuration, and a reproducible benchmarking pipeline on SNAP datasets. Applied degree-based orientation and preprocessing to ensure each triangle is counted exactly once, and achieved up to ~7.3x speedup versus scalar baseline on tested datasets.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">C++17</span>
+                    <span class="tech-tag">OpenMP</span>
+                    <span class="tech-tag">SIMD/AVX2</span>
+                    <span class="tech-tag">Parallel Computing</span>
+                    <span class="tech-tag">Graph Analytics</span>
+                    <span class="tech-tag">Performance Engineering</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/FatikImran/parallel-triangle-counting-simd-openmp" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
+                </div>
+                <p>Methodology inspired by prior work from Zhang et al. (HPEC 2018) and Tom et al. (2017).</p>
             </div>
         </div>
     </section>
