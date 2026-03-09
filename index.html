@@ -339,6 +339,35 @@
             margin-top: 2rem;
         }
 
+        .project-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-chip {
+            border: 1px solid var(--border);
+            background: var(--hover);
+            color: var(--text);
+            border-radius: 20px;
+            padding: 0.45rem 1rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .filter-chip:hover {
+            border-color: var(--primary);
+        }
+
+        .filter-chip.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
         /* Skills Section */
         .skills-grid {
             display: grid;
@@ -684,21 +713,27 @@
     <!-- Projects Section -->
     <section id="projects">
         <h2>Featured Projects</h2>
+        <div class="project-filters" role="group" aria-label="Project category filters">
+            <button class="filter-chip active" type="button" data-filter="all">All</button>
+            <button class="filter-chip" type="button" data-filter="ai-ml">AI / ML</button>
+            <button class="filter-chip" type="button" data-filter="fullstack-mobile">Full Stack &amp; Mobile</button>
+            <button class="filter-chip" type="button" data-filter="systems">Systems</button>
+        </div>
         
         <!-- Featured Projects (Always Visible) -->
         <div class="projects-container">
             <!-- PROJECT 1: AI CONTENT GENERATOR -->
-            <div class="project-card">
+            <div class="project-card" data-categories="ai-ml">
                 <h3>AI Social Media Content Generator</h3>
                 <p>Built an intelligent web application that generates engaging social media captions using HuggingFace's Llama 3.2 AI model. Implemented serverless architecture with Vercel Functions to securely handle API tokens, enabling anyone to generate content instantly without authentication. The tool generates 5 unique, platform-specific captions with relevant hashtags in seconds, helping content creators, marketers, and businesses maintain consistent social media presence.</p>
                 <div class="tech-tags">
                     <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">AI/LLM</span>
+                    <span class="tech-tag">AI / LLM</span>
                     <span class="tech-tag">HuggingFace</span>
                     <span class="tech-tag">Llama 3.2</span>
                     <span class="tech-tag">Vercel</span>
                     <span class="tech-tag">Serverless</span>
-                    <span class="tech-tag">HTML/CSS</span>
+                    <span class="tech-tag">HTML / CSS</span>
                 </div>
                 <div class="project-links">
                     <a href="https://ai-social-content-generator.vercel.app" class="project-link" target="_blank" rel="noopener">Live Demo →</a>
@@ -707,7 +742,7 @@
             </div>
 
             <!-- PROJECT 2: CONNECT PLATFORM -->
-            <div class="project-card">
+            <div class="project-card" data-categories="fullstack-mobile">
                 <h3>Connect - Event Discovery & Management Platform</h3>
                 <p>Designed and developed a full-stack event discovery platform addressing the fragmented information landscape in Pakistan's student community. The system includes a cloud-synced Android mobile app (Kotlin) and desktop application (Java) that enable students to discover local events and organizers to manage registrations efficiently. Implemented offline-first architecture with SQLite for local storage and Firebase for cloud synchronization. Conducted UI/UX design in Figma, managed a team of 3, and applied software design principles throughout development.</p>
                 <div class="tech-tags">
@@ -726,7 +761,7 @@
             </div>
 
             <!-- PROJECT 3: INSTAGRAM CLONE -->
-            <div class="project-card">
+            <div class="project-card" data-categories="fullstack-mobile">
                 <h3>Instagram - Full-Featured Social Media App</h3>
                 <p>Built a pixel-perfect, fully-functional replica of Instagram for Android, implementing core features including user authentication, photo posts, stories, profiles, likes, comments, and real-time feed updates. Architected a hybrid storage solution using Firebase for media/auth, MySQL for relational data, and SQLite for offline caching. The app handles concurrent users, media uploads, and maintains responsive performance across devices.</p>
                 <div class="tech-tags">
@@ -748,7 +783,7 @@
         <div id="more-projects">
             <div class="projects-container">
                 <!-- PROJECT 4: TRAVELER MANAGEMENT -->
-                <div class="project-card">
+                <div class="project-card" data-categories="fullstack-mobile">
                     <h3>TravelEase - Multi-Portal Management System</h3>
                     <p>Developed a comprehensive desktop application for traveler management with four distinct user portals (Traveler, Organizer, Service Provider, Admin), each with role-based access controls and customized functionality. Designed and implemented a normalized relational database schema to handle complex relationships between users, bookings, services, and administrative functions.</p>
                     <div class="tech-tags">
@@ -763,7 +798,7 @@
                 </div>
 
                 <!-- PROJECT 5: GITLITE -->
-                <div class="project-card">
+                <div class="project-card" data-categories="systems">
                     <h3>GitLite - Version Control System</h3>
                     <p>Implemented a lightweight version control system using advanced tree data structures (BST, B-Tree, Merkle Tree, Red-Black Tree) to efficiently manage .csv file versioning and change synchronization. Led a team of 3 in designing the architecture and implementing algorithms for commit, branch, and merge operations via console interface.</p>
                     <div class="tech-tags">
@@ -777,7 +812,7 @@
                 </div>
 
                 <!-- PROJECT 6: AIR TRAFFIC CONTROL -->
-                <div class="project-card">
+                <div class="project-card" data-categories="systems">
                     <h3>Air Traffic Control Simulation</h3>
                     <p>Simulated a real-time air traffic control system managing multiple aircraft arrivals, runway assignments, conflict detection, and violation tracking. Implemented concurrent processing using C++ threading and mutex locks to handle simultaneous aircraft operations while maintaining safety protocols.</p>
                     <div class="tech-tags">
@@ -792,7 +827,7 @@
                 </div>
 
                 <!-- PROJECT 7: PLANTS VS ZOMBIES -->
-                <div class="project-card">
+                <div class="project-card" data-categories="other">
                     <h3>Plants vs Zombies - Game Development</h3>
                     <p>Recreated the EA classic game Plants vs Zombies with complete gameplay mechanics including multiple plant types, zombie waves, resource management, and level progression. Led a team of 2 developers, implementing object-oriented design patterns and game state management using C++ and SFML.</p>
                     <div class="tech-tags">
@@ -1013,6 +1048,46 @@
                 btn.textContent = 'View Less Projects';
             }
         }
+
+        const filterChips = document.querySelectorAll('.filter-chip');
+        const projectCards = document.querySelectorAll('#projects .project-card');
+        const moreProjectsContainer = document.getElementById('more-projects');
+        const toggleProjectsButton = document.querySelector('.view-more-btn .btn');
+
+        function applyProjectFilter(filterName) {
+            let hasVisibleInMoreProjects = false;
+
+            projectCards.forEach(card => {
+                const categories = (card.dataset.categories || '').split(',').map(item => item.trim());
+                const shouldShow = filterName === 'all' || categories.includes(filterName);
+                card.style.display = shouldShow ? '' : 'none';
+
+                if (shouldShow && card.closest('#more-projects')) {
+                    hasVisibleInMoreProjects = true;
+                }
+            });
+
+            if (filterName === 'all') {
+                moreProjectsContainer.classList.remove('expanded');
+                toggleProjectsButton.textContent = 'View More Projects';
+                return;
+            }
+
+            if (hasVisibleInMoreProjects) {
+                moreProjectsContainer.classList.add('expanded');
+                toggleProjectsButton.textContent = 'View Less Projects';
+            }
+        }
+
+        filterChips.forEach(chip => {
+            chip.addEventListener('click', function() {
+                filterChips.forEach(otherChip => otherChip.classList.remove('active'));
+                this.classList.add('active');
+                applyProjectFilter(this.dataset.filter);
+            });
+        });
+
+        applyProjectFilter('all');
 
         // Close mobile menu when clicking a link
         document.querySelectorAll('nav a').forEach(link => {
