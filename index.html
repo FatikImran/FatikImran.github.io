@@ -24,8 +24,8 @@
     <meta name="twitter:image" content="https://fatikimran.github.io/social-preview.svg">
     <meta name="twitter:image:alt" content="Muhammad Fatik Bin Imran portfolio preview card">
 
-    <link rel="icon" type="image/svg+xml" href="./crown.svg">
-    <link rel="shortcut icon" href="./crown.svg">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="shortcut icon" href="./favicon.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -440,9 +440,73 @@
 
         .about-image {
             width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            object-position: center;
             border-radius: var(--radius-md);
             border: 1px solid rgba(152, 162, 179, 0.45);
             box-shadow: var(--shadow-soft);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: var(--s-4);
+        }
+
+        .service-card {
+            padding: 1.2rem;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(152, 162, 179, 0.42);
+            background: rgba(255, 255, 255, 0.86);
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(18, 87, 183, 0.45);
+            box-shadow: var(--shadow-lift);
+        }
+
+        .service-card h3 {
+            font-size: 1.08rem;
+            margin-bottom: var(--s-2);
+        }
+
+        .service-card p {
+            font-size: 0.98rem;
+            margin-bottom: var(--s-3);
+        }
+
+        .service-list {
+            list-style: none;
+            display: grid;
+            gap: 0.35rem;
+        }
+
+        .service-list li {
+            font-size: 0.9rem;
+            color: var(--ink-600);
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .service-list li::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--brand-600);
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+        }
+
+        .services-note {
+            margin-top: var(--s-4);
+            font-size: 0.95rem;
+            color: var(--ink-500);
         }
 
         .about-story {
@@ -877,6 +941,7 @@
             }
 
             .projects-grid,
+            .services-grid,
             .contact-grid,
             .skills-grid {
                 grid-template-columns: 1fr;
@@ -966,6 +1031,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#research">Research</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#services">Services</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#education">Education</a></li>
                     <li><a href="#certifications">Certifications</a></li>
@@ -1298,6 +1364,45 @@
                 </div>
 
                 <div id="project-empty" class="empty-state" role="status" aria-live="polite">No projects match your current filters. Try another keyword or switch category.</div>
+            </div>
+        </section>
+
+        <section class="section" id="services" aria-labelledby="services-title">
+            <div class="container">
+                <h2 class="section-title" id="services-title">Services</h2>
+                <p class="section-lead">Adding services is a strong move for your Upwork profile because it tells visitors exactly what they can hire you for. This section is structured to convert profile views into clear project conversations.</p>
+            <div class="services-grid reveal-stagger">
+                    <article class="service-card">
+                        <h3>AI-Powered Support Automation</h3>
+                        <p>Build smart support workflows that classify tickets, retrieve relevant knowledge, and draft first-response suggestions.</p>
+                        <ul class="service-list">
+                            <li>Ticket triage and prioritization logic</li>
+                            <li>Embedding retrieval with FAISS or vector search</li>
+                            <li>FastAPI backend and dashboard integration</li>
+                        </ul>
+                    </article>
+
+                    <article class="service-card">
+                        <h3>Full-Stack Web App Development</h3>
+                        <p>From MVP to production-ready delivery for startups and founders who need fast iteration with clean architecture.</p>
+                        <ul class="service-list">
+                            <li>React + API backend implementation</li>
+                            <li>Authentication, role logic, and database design</li>
+                            <li>Deployment-ready setup with Docker</li>
+                        </ul>
+                    </article>
+
+                    <article class="service-card">
+                        <h3>Systems and Performance Engineering</h3>
+                        <p>Optimize CPU-heavy workloads and implement efficient algorithmic solutions for engineering and research projects.</p>
+                        <ul class="service-list">
+                            <li>C++ optimization and profiling workflow</li>
+                            <li>Parallel and multithreaded implementations</li>
+                            <li>Benchmarking and reproducible evaluation</li>
+                        </ul>
+                    </article>
+                </div>
+                <p class="services-note">Typical engagement flow: requirements call, milestone plan, weekly progress updates, and documented handover.</p>
             </div>
         </section>
 
