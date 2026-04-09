@@ -438,14 +438,23 @@
             align-items: start;
         }
 
-        .about-image {
+        .about-image-wrap {
             width: 100%;
+            max-width: 300px;
             aspect-ratio: 1 / 1;
-            object-fit: cover;
-            object-position: center;
             border-radius: var(--radius-md);
+            overflow: hidden;
             border: 1px solid rgba(152, 162, 179, 0.45);
             box-shadow: var(--shadow-soft);
+            background: rgba(255, 255, 255, 0.82);
+        }
+
+        .about-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
         }
 
         .services-grid {
@@ -507,6 +516,10 @@
             margin-top: var(--s-4);
             font-size: 0.95rem;
             color: var(--ink-500);
+        }
+
+        .services-cta-row {
+            margin-top: var(--s-4);
         }
 
         .about-story {
@@ -815,6 +828,16 @@
             margin-top: 1.2rem;
         }
 
+        .upwork-link {
+            color: var(--accent-500);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .upwork-link:hover {
+            text-decoration: underline;
+        }
+
         .contact-card {
             display: grid;
             gap: var(--s-2);
@@ -950,6 +973,10 @@
             .about-highlights {
                 grid-template-columns: 1fr;
             }
+
+            .about-image-wrap {
+                margin-inline: auto;
+            }
         }
 
         @media (max-width: 860px) {
@@ -1018,7 +1045,7 @@
     <header class="site-nav-wrap" id="home">
         <div class="container site-nav">
             <a class="brand" href="#home" aria-label="Go to top">
-                <img src="./crown.svg" alt="Crown logo" width="28" height="28">
+                <img src="./favicon.svg" alt="Personal brand logo" width="28" height="28">
                 <span>Muhammad Fatik Bin Imran</span>
             </a>
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-nav-links">
@@ -1108,7 +1135,9 @@
             <div class="container">
                 <h2 class="section-title" id="about-title">About Me</h2>
                 <div class="about-grid reveal">
-                    <img class="about-image" src="profile.png" alt="Portrait of Muhammad Fatik Bin Imran" loading="lazy" decoding="async" width="560" height="560">
+                    <div class="about-image-wrap">
+                        <img class="about-image" src="profile.png" alt="Portrait of Muhammad Fatik Bin Imran" loading="lazy" decoding="async" width="560" height="560">
+                    </div>
                     <div>
                         <p class="about-story">I am a Computer Science student who enjoys building software that solves practical problems. My path started with Python and C++, and now spans full-stack web engineering, Android development, and applied machine learning. I care about delivery quality, maintainable architecture, and measurable user value.</p>
                         <div class="about-highlights">
@@ -1370,7 +1399,7 @@
         <section class="section" id="services" aria-labelledby="services-title">
             <div class="container">
                 <h2 class="section-title" id="services-title">Services</h2>
-                <p class="section-lead">Adding services is a strong move for your Upwork profile because it tells visitors exactly what they can hire you for. This section is structured to convert profile views into clear project conversations.</p>
+                <p class="section-lead">Clear service packages for founders, teams, and clients who need practical software delivery with reliable communication and milestone-based execution.</p>
             <div class="services-grid reveal-stagger">
                     <article class="service-card">
                         <h3>AI-Powered Support Automation</h3>
@@ -1403,6 +1432,9 @@
                     </article>
                 </div>
                 <p class="services-note">Typical engagement flow: requirements call, milestone plan, weekly progress updates, and documented handover.</p>
+                <div class="cta-row services-cta-row">
+                    <a class="btn btn-ghost" href="https://www.upwork.com/freelancers/~01b5b73b78189e6d89?mp_source=share" target="_blank" rel="noopener">Hire Me on Upwork</a>
+                </div>
             </div>
         </section>
 
@@ -1539,6 +1571,15 @@
                 <div class="contact-grid reveal-stagger">
                     <article class="contact-card">
                         <span class="contact-line">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 8.5L12 4L21 8.5L12 13L3 8.5Z"></path><path d="M5.5 11V16.5L12 20L18.5 16.5V11"></path></svg>
+                            Upwork
+                        </span>
+                        <a href="https://www.upwork.com/freelancers/~01b5b73b78189e6d89?mp_source=share" target="_blank" rel="noopener">upwork.com/freelancers/~01b5b73b78189e6d89</a>
+                        <p class="response-note">Best for fixed-scope projects, contracts, and verified client work.</p>
+                    </article>
+
+                    <article class="contact-card">
+                        <span class="contact-line">
                             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6H20V18H4V6Z"></path><path d="M4 7L12 13L20 7"></path></svg>
                             Email
                         </span>
@@ -1568,6 +1609,7 @@
                 <div class="cta-row contact-cta-row">
                     <a class="btn btn-primary" href="mailto:fatikbinimran@gmail.com">Email Me Directly</a>
                     <a class="btn btn-secondary" href="MuhammadFatikBin_Imran_Resume.pdf" download>Download Resume</a>
+                    <a class="btn btn-ghost" href="https://www.upwork.com/freelancers/~01b5b73b78189e6d89?mp_source=share" target="_blank" rel="noopener">View Upwork Profile</a>
                 </div>
             </div>
         </section>
@@ -1576,7 +1618,7 @@
     <footer>
         <div class="container footer-inner">
             <p>&copy; <span id="current-year">2026</span> Muhammad Fatik Bin Imran. Built with focus and intent.</p>
-            <p>Crown icon image by juicy_fish on Freepik.</p>
+            <p>Open to freelance and internship opportunities.</p>
         </div>
     </footer>
 
